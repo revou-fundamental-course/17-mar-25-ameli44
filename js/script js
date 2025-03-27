@@ -1,0 +1,24 @@
+const squareForm = document.getElementById('squareForm');
+if (squareForm) {
+    squareForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const sideLengthInput = document.getElementById('sideLength') as HTMLInputElement;
+        if (sideLengthInput) {
+            const sideLength = parseFloat(sideLengthInput.value);
+            if (isNaN(sideLength) || sideLength <= 0) {
+                alert('Masukkan panjang sisi yang valid (angka positif)!');
+                return;
+            }
+            const area = sideLength * sideLength;
+            const perimeter = 4 * sideLength;
+
+            // 检查元素是否存在，并转换数字为字符串
+            const areaResult = document.getElementById('areaResult');
+            const perimeterResult = document.getElementById('perimeterResult');
+            if (areaResult && perimeterResult) {
+                areaResult.textContent = area.toString(); // 转换为字符串
+                perimeterResult.textContent = perimeter.toString(); // 转换为字符串
+            }
+        }
+    });
+}
